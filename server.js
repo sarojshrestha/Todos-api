@@ -39,7 +39,7 @@ app.get('/todos/:id',function(req,res){
     if(matched){    
         res.json(matched);
     }else{
-        res.status(404).send();
+        res.status(404).send("can not find");
     }
        
 });
