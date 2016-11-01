@@ -61,6 +61,21 @@ todos.push(bodyText);
 res.json(todos);
 });
 
+//Delete /todos:id
+app.delete('/todos/:id',function(req, res){
+    
+    var todoId = parseInt(req.params.id);
+    var matched = _.findWhere(todos,{id:todoId});
+    console.log('Deleting ' + matched);
+    if(!matched){
+        res.status(404).json({"error":"no id found"});
+    }else{
+           todos = _.without(todos,matched);
+             console.log('deleted ' + matched);
+   res.json(todos);
+    }
+});
+
 app.listen(port, function(){
     console.log("Express is running on port " + port)
 });
